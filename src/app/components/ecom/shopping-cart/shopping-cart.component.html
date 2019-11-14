@@ -1,0 +1,92 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" (click)="home()">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" (click)="shoppingCart()">Shoping cart <span
+                    class="badge badge-pill badge-primary">{{pqu}}</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" (click)="ajouterProd()" *ngIf="isConnected">+Je vends</a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+      <!-- Page Content -->
+      
+      <div class="container">
+      
+        
+          <div class="row">
+      
+              <!-- Grid column -->
+              <div class="col-lg-4 col-md-12" *ngFor="let prod of products;let j=index">
+            
+                <!--Card-->
+                <div class="card">
+            
+      
+              <div class="col-lg-20 col-md-12 mb-10">
+                <div class="card h-10">
+                  <a href="#"><img class="card-img-top" [src]="products[j].prod.photoUrl" width="100" height="350" alt=""></a>
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      <a href="#">{{ prod.prod.productName }}</a>
+                    </h4>
+                    <h5>{{ prod.prod.productPrice }}</h5>
+                    <p class="card-text">{{ prod.prod.productDescription }}
+                    </p>
+                  </div>
+                  <div class="card-footer">
+      
+                    <div class="row no-gutters">
+                      <div class="col-2"> <img [src]="cartImgPath" alt="Add to cart" class="cart" (click)="remove(products[j])" />
+                      </div>
+      
+                      
+                      
+                      <input class="col text-center" [value]="products[j].quantite">
+      
+                      
+                    </div>
+                  </div>
+      
+      
+                </div>
+      
+      
+      
+              </div>
+              <!-- /.row -->
+      
+            </div>
+            <!-- /.col-lg-9 -->
+      
+          </div>
+          <!-- /.row -->
+        </div>
+      </div>
+      <!-- /.container -->
+      
+      <!-- Footer -->
+      <footer class="py-5 bg-dark">
+        <div class="container">
+          <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+        </div>
+        <!-- /.container -->
+      </footer>
+      
+      <!-- Bootstrap core JavaScript -->
